@@ -480,6 +480,13 @@ footer.page-foot{
   letter-spacing:0.6px;
   color: rgba(237,231,218,0.35);
 }
+footer.page-foot .foot-sep{ margin: 0 8px; }
+footer.page-foot a{
+  color: rgba(237,231,218,0.45);
+  text-decoration: underline;
+  text-underline-offset:2px;
+}
+footer.page-foot a:hover{ color: var(--brass-light); }
 
 @media (max-width:600px){
   .value-strip{ grid-template-columns:1fr; }
