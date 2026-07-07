@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" id="htmlRoot">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RUTIN — A grooming routine, not another product to buy</title>
+<meta name="description" content="Answer a few questions and get a personalized skin, hair, and beard routine — free. RUTIN is building the full coaching app now.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,560;9..144,680&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="brand">RUTIN<span data-i18n="brandTag">EARLY ACCESS</span></div>
+    <div class="lang-toggle" id="langToggle" role="group" aria-label="Language">
+      <button type="button" class="lang-btn active" data-lang="en">EN</button>
+      <span class="lang-sep">/</span>
+      <button type="button" class="lang-btn" data-lang="bn">বাংলা</button>
+    </div>
+  </div>
+
+  <!-- LANDING -->
+  <section class="hero" id="landing">
+    <div class="kicker" data-i18n="kicker">A grooming routine, not another product to buy</div>
+    <h1 id="heroH1">Stop guessing<br>with your <em>skin.</em></h1>
+    <p class="lede" data-i18n="lede">Answer a few questions and get a starting routine for your skin, beard, and climate — free. The full app, with day-to-day coaching, is what we're building next.</p>
+    <div class="hero-ctas">
+      <button class="cta-primary" id="startQuizBtn">
+        <span data-i18n="ctaPrimary">Take the 90-second quiz</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="cta-secondary" id="toggleWaitlistBtn" data-i18n="ctaSecondary">Not ready — just notify me when the app launches</button>
+    </div>
+
+    <div class="waitlist-panel" id="waitlistPanel">
+      <p data-i18n="waitlistText">Leave your email and we'll let you know the moment the RUTIN app opens up. No spam, one message when it matters.</p>
+      <form class="waitlist-form" id="waitlistForm" data-source="hero_waitlist">
+        <input type="email" id="waitlistEmail" name="email" placeholder="you@email.com" required>
+        <button type="submit" data-i18n="waitlistBtn">Notify me</button>
+      </form>
+      <div class="waitlist-msg" id="waitlistMsg" data-i18n="waitlistMsg">You're on the list. We'll be in touch.</div>
+    </div>
+
+    <div class="value-strip">
+      <div class="value-item">
+        <span class="v-label" data-i18n="value1Label">Cost</span>
+        <div class="v-text" data-i18n="value1Text">This basic routine is free, always. No product to buy to get value.</div>
+      </div>
+      <div class="value-item">
+        <span class="v-label" data-i18n="value2Label">Bias</span>
+        <div class="v-text" data-i18n="value2Text">We don't sell grooming products, so there's nothing to push on you.</div>
+      </div>
+      <div class="value-item">
+        <span class="v-label" data-i18n="value3Label">Fit</span>
+        <div class="v-text" data-i18n="value3Text">Built around South Asian skin, climate, and budgets — not a translated US routine.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <div class="stage" id="stage">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="card" id="card"></div>
+  </div>
+
+  <footer class="page-foot" data-i18n="footer">RUTIN · WEBSITE PREVIEW · NOT A MEDICAL DEVICE</footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
