@@ -11,6 +11,34 @@
 const FORMSPREE_ENDPOINT = ""; // e.g. "https://formspree.io/f/xxxxabcd"
 
 /* ============================================================
+   CONFIG — set this to your Google Analytics 4 Measurement ID
+   to track visits, quiz starts/completions, and signups.
+   1. Create a free GA4 property at https://analytics.google.com
+   2. Admin → Data Streams → Web → copy the Measurement ID
+      (looks like "G-XXXXXXXXXX")
+   3. Paste it below.
+   Until this is set, no analytics script loads at all — nothing
+   is tracked and nothing is sent anywhere.
+   ============================================================ */
+const GA_MEASUREMENT_ID = ""; // e.g. "G-XXXXXXXXXX"
+
+function initAnalytics(){
+  if (!GA_MEASUREMENT_ID) return;
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function(){ window.dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', GA_MEASUREMENT_ID);
+}
+
+function trackEvent(name, params){
+  if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+}
+
+/* ============================================================
    TRANSLATIONS
    ============================================================ */
 const UI = {
@@ -293,6 +321,7 @@ async function submitWaitlistForm(formEl, msgEl, source){
     // No backend configured yet — show local confirmation only.
     formEl.style.display = 'none';
     msgEl.classList.add('show');
+    trackEvent('waitlist_signup', { source, language: lang, backend: 'none' });
     return;
   }
 
@@ -309,6 +338,7 @@ async function submitWaitlistForm(formEl, msgEl, source){
     if (res.ok) {
       formEl.style.display = 'none';
       msgEl.classList.add('show');
+      trackEvent('waitlist_signup', { source, language: lang });
     } else {
       alert(UI[lang].formError);
     }
@@ -332,6 +362,7 @@ function startQuiz(){
   step = 0;
   render();
   window.scrollTo({top:0, behavior:'smooth'});
+  trackEvent('quiz_start', { language: lang });
 }
 document.getElementById('startQuizBtn').onclick = startQuiz;
 
@@ -412,6 +443,7 @@ function buildBasicRoutine(){
 function renderResult(){
   const t = UI[lang];
   const r = buildBasicRoutine();
+  trackEvent('quiz_complete', { language: lang, concern: answers.concern, skin: answers.skin });
   card.innerHTML = `
     <div class="result-head">
       <div class="eyebrow">${t.resultEyebrow}</div>
@@ -466,6 +498,7 @@ function renderResult(){
     const block = document.getElementById('resultWaitlistBlock');
     block.style.display = 'block';
     block.scrollIntoView({behavior:'smooth', block:'center'});
+    trackEvent('premium_interest', { language: lang });
   };
 
   const rForm = document.getElementById('resultWaitlistForm');
@@ -493,3 +526,4 @@ function render(){
    Init
    ============================================================ */
 applyStaticTranslations();
+initAnalytics();
