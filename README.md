@@ -1,3 +1,4 @@
+[README.md](https://github.com/user-attachments/files/29741250/README.md)
 # RUTIN — website preview
 
 A static marketing site with the RUTIN quiz built in. No build step, no framework —
@@ -14,6 +15,32 @@ that serves static files, including Vercel's free tier, with zero configuration.
   placeholder price and a waitlist capture
 - A **language toggle** (top-right corner: `EN / বাংলা`) that switches the
   entire quiz and report between English and Bangla, instantly, no reload
+
+## Before you go live — three things to fill in
+
+**1. Social share preview (Open Graph)**
+In `index.html`, replace every `REPLACE_WITH_YOUR_URL` with your real site URL
+once you have it (e.g. `https://rutin.vercel.app`, or your custom domain
+later). There are three spots — `og:image`, `og:url`, and `twitter:image`.
+Until you do this, links you share on Facebook/WhatsApp will still work fine,
+they just won't show the preview card image.
+
+**2. Analytics**
+`js/app.js` has a `GA_MEASUREMENT_ID` constant at the top, right under the
+Formspree one. Create a free GA4 property at analytics.google.com, grab the
+Measurement ID (`G-XXXXXXXXXX`) from Admin → Data Streams → Web, and paste it
+in. Until then, no analytics script loads at all — nothing is tracked. Once
+it's set, you'll get pageviews plus four custom events: `quiz_start`,
+`quiz_complete`, `premium_interest` (someone tapped the locked premium
+block), and `waitlist_signup` — each tagged with which language the visitor
+was using.
+
+**3. Favicon + footer link**
+Already done — `assets/favicon-source.svg` / `favicon.ico` /
+`apple-touch-icon.png` are wired into `index.html`, and the footer now links
+to your YouTube channel (Tunnel of Mahin's Thought). If the channel URL is
+ever different from `youtube.com/@tunnelofmahinsthought`, update the `<a>`
+tag in the footer of `index.html`.
 
 ## Turning on real email capture (Formspree)
 
