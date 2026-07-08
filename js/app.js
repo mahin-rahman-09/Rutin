@@ -8,7 +8,7 @@
    Until this is set, forms will show a friendly local
    confirmation but won't send anywhere.
    ============================================================ */
-const FORMSPREE_ENDPOINT = ""; // e.g. "https://formspree.io/f/xxxxabcd"
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xgojbpqo";
 
 /* ============================================================
    CONFIG — set this to your Google Analytics 4 Measurement ID
@@ -20,7 +20,7 @@ const FORMSPREE_ENDPOINT = ""; // e.g. "https://formspree.io/f/xxxxabcd"
    Until this is set, no analytics script loads at all — nothing
    is tracked and nothing is sent anywhere.
    ============================================================ */
-const GA_MEASUREMENT_ID = ""; // e.g. "G-XXXXXXXXXX"
+const GA_MEASUREMENT_ID = "G-850MCWL54Z";
 
 function initAnalytics(){
   if (!GA_MEASUREMENT_ID) return;
