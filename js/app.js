@@ -53,6 +53,8 @@ const UI = {
     waitlistBtn: "Notify me",
     waitlistMsg: "You're on the list. We'll be in touch.",
     waitlistPlaceholder: "you@email.com",
+    emailLabel: "Email address",
+    privacyNote: "Your email is only used to notify you about RUTIN — nothing else.",
     value1Label: "Cost", value1Text: "This basic routine is free, always. No product to buy to get value.",
     value2Label: "Bias", value2Text: "We recommend the habit. You choose the brand.",
     value3Label: "Fit", value3Text: "Built around South Asian skin, climate, and budgets — not a translated US routine.",
@@ -90,6 +92,8 @@ const UI = {
     waitlistBtn: "জানাবেন",
     waitlistMsg: "আপনি লিস্টে যুক্ত হয়েছেন। আমরা যোগাযোগ করবো।",
     waitlistPlaceholder: "you@email.com",
+    emailLabel: "ইমেইল ঠিকানা",
+    privacyNote: "আপনার ইমেইল শুধু RUTIN সম্পর্কে জানানোর জন্য ব্যবহার হবে — আর কিছুর জন্য না।",
     value1Label: "খরচ", value1Text: "এই বেসিক রুটিন সবসময় ফ্রি। কোনো প্রোডাক্ট কেনার দরকার নেই।",
     value2Label: "পক্ষপাত", value2Text: "আমরা অভ্যাসটা সাজেস্ট করি, ব্র্যান্ড বেছে নেওয়াটা আপনার হাতে।",
     value3Label: "উপযোগিতা", value3Text: "দক্ষিণ এশিয়ার ত্বক, আবহাওয়া আর বাজেট মাথায় রেখে বানানো — আমেরিকার রুটিনের অনুবাদ নয়।",
@@ -485,10 +489,12 @@ function renderResult(){
     <div class="result-waitlist" id="resultWaitlistBlock" style="display:none;">
       <p>${t.resultWaitlistText}</p>
       <form class="waitlist-form" id="resultWaitlistForm" data-source="result_waitlist">
+        <label for="resultWaitlistEmail" class="sr-only">${t.emailLabel}</label>
         <input type="email" id="resultWaitlistEmail" name="email" placeholder="${t.waitlistPlaceholder}" required>
         <button type="submit">${t.waitlistBtn}</button>
       </form>
       <div class="waitlist-msg" id="resultWaitlistMsg">${t.resultWaitlistMsg}</div>
+      <div class="privacy-note">${t.privacyNote}</div>
     </div>
 
     <button class="restart-btn" id="restartBtn">${t.restartBtn}</button>
